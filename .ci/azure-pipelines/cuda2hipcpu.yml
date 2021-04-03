@@ -37,5 +37,5 @@ stages:
         tags: |
           $(tag)
     - script: |
-        docker run -it $(imageRepository):$(tag) sh -c "cd /hip-cpu/build && make test"
+        docker run $(imageRepository):$(tag) sh -c "cd /hip-cpu/build && make test"
       
