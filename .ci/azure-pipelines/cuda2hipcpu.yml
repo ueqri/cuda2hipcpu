@@ -30,7 +30,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         Dockerfile: $(dockerfilePath)
-        buildContext: '**/'
+        buildContext: '**'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)

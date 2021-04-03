@@ -104,8 +104,8 @@ RUN \
 # test HIPIFY & HIP-CPU using CUDA vector adding sample
 RUN mkdir /root/test
 ARG CudaSample=vectorAdd.cu
-COPY vectorAdd.cu /root/test/${CudaSample}
-COPY CMakeLists.txt /root/test/CMakeLists.txt
+COPY sample/${CudaSample} /root/test/${CudaSample}
+COPY sample/CMakeLists.txt /root/test/CMakeLists.txt
 RUN \
   cd /root/test \
   && hipify-clang ${CudaSample} \
