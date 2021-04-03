@@ -12,23 +12,23 @@ You can use the command blow to start a container with enough tools easily:
 
 ```bash
 docker run --rm -it \
-	--name cuda2hipcpu \
-	ueqri/cuda2hipcpu:latest
+       --name cuda2hipcpu \
+       ueqri/cuda2hipcpu:latest
 ```
 
 or build from Dockerfile:
 
 ```bash
-git clone https://github.com/ueqri/cuda2hipcpu
+git clone https://github.com/ueqri/cuda2hipcpu.git
 docker build -t cuda2hipcpu:latest .
 docker run --rm -it \
-  --name cuda2hipcpu \
-  cuda2hipcpu:latest
+       --name cuda2hipcpu \
+       cuda2hipcpu:latest
 ```
 
 # Usage
 
-A CUDA vector addition code is in `sample/vectorAdd.cu` and the generic CMakeLists.txt is in the same directory.
+A CUDA vector addition sample is provided as `sample/vectorAdd.cu` and the generic CMakeLists.txt is in the same directory.
 
 Note that, the CMakeLists.txt is **not** prepare for CUDA code, but **for HIP-CPU capable code** with file suffix `.cpp`.
 

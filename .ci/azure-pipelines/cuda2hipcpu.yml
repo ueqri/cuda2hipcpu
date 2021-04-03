@@ -7,10 +7,12 @@ pr:
 resources:
 - repo: self
 
+name: $(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
+
 variables:
   vmImageName: "ubuntu-latest"
   imageRepository: "ueqri/cuda2hipcpu"
-  tag: "latest"
+  tag: $(Build.BuildNumber)
   dockerfilePath: "**/Dockerfile"
   dockerRegistryServiceConnection: 'dockerRegistryServiceConnectionDefault'
 
