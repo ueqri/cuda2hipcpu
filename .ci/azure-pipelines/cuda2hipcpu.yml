@@ -12,8 +12,7 @@ variables:
   imageRepository: "cuda2hipcpu"
   tag: "latest"
   dockerfilePath: "Dockerfile"
-  dockerRegistryServiceConnection: |
-    "dockerRegistryServiceConnectionDefault"
+  dockerRegistryServiceConnection: 'dockerRegistryServiceConnectionDefault'
 
 stages:
 - stage: Build
