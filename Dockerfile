@@ -53,15 +53,9 @@ ARG CMakeVersion=3.16
 ARG CMakeBuild=3
 RUN \
   mkdir /cmake && cd /cmake \
-  && wget https://cmake.org/files/v$CMakeVersion/cmake-$CMakeVersion.$CMakeBuild.tar.gz \
-  && tar -xzvf cmake-$CMakeVersion.$CMakeBuild.tar.gz \
-  && cd cmake-$CMakeVersion.$CMakeBuild/ \
-  && ./bootstrap \
-  && make -j$(nproc) \
-  && make install \
-  && cd / \
-  && rm -rf /cmake \
-  && cmake --version
+  && wget -qO- "https://cmake.org/files/v${CMakeVersion}/cmake-${CMakeVersion}.${CMakeBuild}-Linux-x86_64.tar.gz" | \
+      tar --strip-components=1 -xz -C /usr/local \
+  && cd / && rm -rf /cmake
 
 # clone and build HIPIFY which converts CUDA to portable C++ code
 ENV HIPIFY_VERSION rocm-4.1.0
@@ -104,8 +98,8 @@ RUN \
 # test HIPIFY & HIP-CPU using CUDA vector adding sample
 RUN mkdir /root/test
 ARG CudaSample=vectorAdd.cu
-COPY sample/${CudaSample} /root/test/${CudaSample}
-COPY sample/CMakeLists.txt /root/test/CMakeLists.txt
+ADD https://raw.githubusercontent.com/ueqri/cuda2hipcpu/main/sample/${CudaSample} /root/test/${CudaSample}
+ADD https://raw.githubusercontent.com/ueqri/cuda2hipcpu/main/sample/CMakeLists.txt /root/test/CMakeLists.txt
 RUN \
   cd /root/test \
   && hipify-clang ${CudaSample} \
