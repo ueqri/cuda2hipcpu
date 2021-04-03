@@ -34,3 +34,6 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - script: |
+      docker run -it $(imageRepository):$(tag) sh -c "cd /hip-cpu/build && make test"
+      

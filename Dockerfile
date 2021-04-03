@@ -71,7 +71,7 @@ RUN set -x \
       .. \
   && make -j$(nproc) install \
   && make clean \
-  && ln -s  /hipify/dist/hipify-clang /usr/bin/hipify-clang
+  && ln -s /hipify/dist/hipify-clang /usr/bin/hipify-clang
 
 # install libtbb from Official Release in the GitHub, 
 # due to the libtbb-dev in bionic apt repository is too old to build HIP-CPU runtime
@@ -94,6 +94,13 @@ RUN \
   && mkdir build && cd build \
   && cmake .. \
   && cmake --build . --target install
+
+# add convertAllCuda.sh tool to /usr/bin
+RUN mkdir /utils
+COPY utils/convertAllCuda.sh /utils/convertAllCuda.sh
+RUN \
+  chmod +x /utils/convertAllCuda.sh \
+  && ln -s /utils/convertAllCuda.sh /usr/bin/convertAllCuda
 
 # test HIPIFY & HIP-CPU using CUDA vector adding sample
 RUN mkdir /root/test
