@@ -9,7 +9,7 @@ resources:
 
 variables:
   vmImageName: "ubuntu-latest"
-  imageRepository: "cuda2hipcpu"
+  imageRepository: "ueqri/cuda2hipcpu"
   tag: "latest"
   dockerfilePath: "**/Dockerfile"
   dockerRegistryServiceConnection: 'dockerRegistryServiceConnectionDefault'
