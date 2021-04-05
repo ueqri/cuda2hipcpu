@@ -1,8 +1,18 @@
 trigger:
-- main
+  branches:
+    include: 
+    - main
+  paths:
+    exclude:
+    - README.md
 
 pr:
-- main
+  branches:
+    include: 
+    - main
+  paths:
+    exclude:
+    - README.md
 
 resources:
 - repo: self
@@ -38,4 +48,5 @@ stages:
           $(tag)
     - script: |
         docker run $(imageRepository):$(tag) sh -c "cd /hip-cpu/build && make test"
+      displayName: 'Run the official test of HIP-CPU runtime library'
       
