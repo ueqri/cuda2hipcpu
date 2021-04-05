@@ -26,7 +26,7 @@ docker run --rm -it \
        cuda2hipcpu:latest
 ```
 
-# Usage
+## Usage
 
 A CUDA vector addition sample is provided as `sample/vectorAdd.cu` and the generic CMakeLists.txt is in the same directory.
 
@@ -51,16 +51,16 @@ cmake --build .
 ./test-HIP
 ```
 
-# Test
+## Test
 If you want to run the official test of HIP-CPU, just execute `cd /hip-cpu/build && make test` in the container, 
 
 or you can run `docker run -it cuda2hipcpu:latest sh -c "cd /hip-cpu/build && make test"` in the host.
 
-# Utilities
+## Utilities
 
 Here are some useful utilities of cuda2hipcpu:
 
-## convertAllCuda
+### convertAllCuda
 
 Usage:
 1. `convertAllCuda` (non-recursive) only deals with the *.cu in current directory
@@ -70,6 +70,6 @@ Usage:
 Note:
 A symbolic link of this script was created to /usr/bin/convertAllCuda during the docker build, so just use `convertAllCuda` for convenience.
 
-## more...
+### more...
 
 TODO
