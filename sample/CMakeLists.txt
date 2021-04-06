@@ -1,3 +1,8 @@
+# This CMake just contains enough configures to build
+# the executable with HIP-CPU runtime library, not for
+# build CUDA code directly. If you want to build CUDA
+# code to run only in CPU, use `convertAllCuda` first.
+
 cmake_minimum_required(VERSION 3.16)
 project(test-HIP-CPU)
 

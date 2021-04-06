@@ -8,6 +8,8 @@ It uses [ROCm-HIP toolkits](https://github.com/ROCm-Developer-Tools) to port CUD
 
 The related tools are [HIPIFY](https://github.com/ROCm-Developer-Tools/HIPIFY), [Intel TBB](https://github.com/oneapi-src/oneTBB), [HIP-CPU runtime library](https://github.com/ROCm-Developer-Tools/HIP-CPU).
 
+Now the Dockerfile is based on CUDA 10.1 image, the version >= 11.0 is not supported yet due to the [conflicts between clang and CUDA11+](https://bugs.llvm.org/show_bug.cgi?id=47332).
+
 You can use the command blow to start a container with enough tools easily:
 
 ```bash
